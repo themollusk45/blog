@@ -1,0 +1,30 @@
+<% if signed_in? %>
+	<div class="row">
+	  <aside class="span4">
+	    <section>
+	      
+	    </section>
+	  </aside>
+	  <div class="span8">
+	  	<section>
+	    	
+	    </section>
+	    <section>
+		    <h3> Post Feed </h3>
+		    
+		</section>
+	  </div>
+	</div>  
+<% else %>
+	<div class="center hero-unit">
+		<h1> Welcome to Mugen Blog</h1>
+
+		<h2>
+			This is the homepage for Mugen Blogs, where you can create your own blog site.  Mugen is japanese for infinity and/or dreams, and also my pug.
+		</h2>
+
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	</div>
+
+	<%= link_to image_tag("mugen.png", alt: "Public Gallery"), '#' %>
+<% end %>

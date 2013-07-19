@@ -1,0 +1,54 @@
+<% provide(:title, "Edit user") %> 
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.hidden_field :password, :value => current_user.password %>
+      <%= f.hidden_field :password_confirmation, :value => current_user.password_confirmation %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <% if(@user.logo.url != "/logos/original/missing.png") %>
+        <%=h image_tag @user.logo.url %>
+      <% end %>
+    
+      <%= f.label :logo, 'Choose the image logo which will appear at the top of your blog' %>
+      <%= f.file_field :logo %>
+
+      <%= f.submit "update logo", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <h1>Links to appear on right side bar</h1>
+    <section class="rhs_links">
+      <ul>
+        <% @user.links.each do |link| %>
+          <li>
+            <%= link_to link.text, link.url %>
+            <%= link_to "edit post", '#' %>
+            <%= link_to "delete", user_link_path(@user.id, link.id), method: :delete,
+                                  :remote => true,
+                                  data: { confirm: "you sure?" } %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+    </section>
+
+    <%= form_for([@user, @user.links.build]) do |f| %>
+      <%= f.label :url, 'Enter url' %>
+      <%= f.text_field :url %>
+
+      <%= f.label :text, 'Enter text for link' %>
+      <%= f.text_field :text %>
+
+      <%= f.submit "add link", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <%= gravatar_for @user %>
+    <a href="http://gravatar.com/emails">change</a>
+  </div>
+</div>
