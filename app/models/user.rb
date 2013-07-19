@@ -11,9 +11,11 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :logo_file, :logo
+  attr_accessor :logo_file_name, :logo_file_size
   has_secure_password
   has_many :posts, dependent: :destroy
   has_many :links, dependent: :destroy
+  has_attached_file :logo
 
 
   #before_save { |user| user.name = name.downcase }
@@ -26,9 +28,9 @@ class User < ActiveRecord::Base
   					format: { with: VALID_EMAIL_REGEX }
  # validates :password, presence: true, length: { minimum: 6 }
  # validates :password_confirmation, presence: true  
-#  validates_attachment_size :logo, :less_than => 3.megabytes
+  validates_attachment_size :logo, :less_than => 3.megabytes
 
- # has_attached_file :logo
+
 
 
   def feed
