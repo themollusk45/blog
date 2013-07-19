@@ -48,4 +48,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+group :production do 
+	gem 'rack-google_analytics', :require => "rack/google_analytics"
+end	
 gem 'therubyracer'
