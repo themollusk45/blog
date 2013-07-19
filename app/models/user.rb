@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :posts, dependent: :destroy
   has_many :links, dependent: :destroy
-  has_attached_file :logo
+  has_attached_file :logo,
+    :url => "/:class/:attachment/:id/:style_:basename.:extension",
+    :path => ":rails_root/public/:class/:attachment/:id/:style_:basename.:extension"
 
 
   #before_save { |user| user.name = name.downcase }
