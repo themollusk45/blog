@@ -7,7 +7,7 @@ Blog::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   
-  resources :posts, only: [:create, :destroy, :show] do
+  resources :posts, only: [:create, :destroy, :show, :update, :edit] do
     resources :comments
   end
 

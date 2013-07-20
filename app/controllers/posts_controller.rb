@@ -18,6 +18,18 @@ class PostsController < ApplicationController
   	end
   end
 
+  def edit
+  end
+
+  def update
+    if @post.update_attributes(params[:id])
+      flash[:success] = "Post updated"
+      redirect_to :back
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @post.destroy
     redirect_to root_url 
