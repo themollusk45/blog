@@ -28,7 +28,7 @@
         <% @user.links.each do |link| %>
           <li>
             <%= link_to link.text, link.url %>
-            <%= link_to "edit post", '#' %>
+            <%= link_to "edit link", '#' %>
             <%= link_to "delete", user_link_path(@user.id, link.id), method: :delete,
                                   :remote => true,
                                   data: { confirm: "you sure?" } %>

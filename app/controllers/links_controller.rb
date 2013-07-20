@@ -5,8 +5,12 @@ class LinksController < ApplicationController
 		redirect_to user_path(@user)
 	end
 	def destroy
-	    Link.find(params[:id]).destroy
-	    flash[:success] = "Link destroyed."
-	    redirect_to users_url
+	     @link = Link.find(params[:id])
+	     if @link.destroy
+	      flash[:success] = "Link destroyed."
+	      #redirect_to root_url#dont need ridirect, will be done with ajax eventually
+        else
+        	redirect_to :back
+        end
   	end
 end
