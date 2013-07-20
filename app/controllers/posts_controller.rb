@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy]
-  before_filter :correct_user, only: :destroy
+  before_filter :signed_in_user, only: [:create, :destroy, :edit, :update]
+  before_filter :correct_user, only: [:destroy, :edit, :update]
 
   def show
     @post = Post.find_by_id(params[:id])
     @user = @post.user
+    @comment = Comment.find_by_id(params[:comment])
   end
 
   def create
@@ -22,9 +23,10 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update_attributes(params[:id])
+    #@post = Post.find_by_id(params[:id])
+    if @post.update_attributes(params[:post])
       flash[:success] = "Post updated"
-      redirect_to :back
+      redirect_to @post
     else
       render 'edit'
     end

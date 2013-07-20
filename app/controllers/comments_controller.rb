@@ -12,6 +12,23 @@ class CommentsController < ApplicationController
     	redirect_to root_url 
   	end
 
+  	def edit
+  		@post = Post.find_by_id(params[:post_id])
+  		@comment = Comment.find(params[:id])
+  	end
+
+  	def update
+    	@post = Post.find_by_id(params[:post_id])
+    	@comment = Comment.find(params[:id])
+    	if @comment.update_attributes(params[:comment])
+      		flash[:success] = "comment updated"
+      		redirect_to @post
+    	else
+    		flash[:failure] ="thre was a problem"
+      		render 'edit'
+    	end
+  	end
+
   private
 
     def correct_user
