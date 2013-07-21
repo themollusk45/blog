@@ -3,10 +3,10 @@ mugen.png: mugen-b35d81160dd35547f7b8a1768b1ff45c.png
 mugen/index.png: mugen-b35d81160dd35547f7b8a1768b1ff45c.png
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-1e5875175fcfad2f980e760c71ead96a.js
-application/index.js: application-1e5875175fcfad2f980e760c71ead96a.js
-application.css: application-5ec4b80b45ee0cec292f4788af4f6ef7.css
-application/index.css: application-5ec4b80b45ee0cec292f4788af4f6ef7.css
+application.js: application-0e7fd7a6a6b745f7ea79773bdc380557.js
+application/index.js: application-0e7fd7a6a6b745f7ea79773bdc380557.js
+application.css: application-2653f6658ea970336bda10b00e696dc4.css
+application/index.css: application-2653f6658ea970336bda10b00e696dc4.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 fontawesome-webfont.eot: fontawesome-webfont-b49e662c23140944a17d6301d2259446.eot
