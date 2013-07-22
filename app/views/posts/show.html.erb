@@ -88,41 +88,43 @@
 
         <p>Older posts</p>
         <div id = "listContainer">
-          <ul id="expList"><!- opening tag to go around all years ->
+          <ul id="expList">
             
-              <% curr_year = nil, curr_month = nil %>  
+              <% curr_year = nil %>
+              <% curr_month = nil %>  
+
               <% @post.user.posts.each do |post| %>
                 <% if (curr_year == nil) || (curr_year != post.created_at.year) %>
                   <% if (curr_year != nil) %>
-                      </ul id="closemonthslist"><!- closing tag for months ->
-
-                    </li id="close previous months li"><!- if it s not first yar, add close li tag ->
+                      </ul >
+                    </li id="close previous months li">
                     </ul>
                     </li>
                   <% end %>
+
                   <% curr_year = post.created_at.year %>
-                  <% curr_month = nil %><!-reset to knil ->
+                  <% curr_month = nil %>
                   <li> <%= curr_year %> 
-                  <ul><!-opening tag for months in year ->
+                  <ul>
                 <% end %>
 
                 <% if (curr_month == nil) || (curr_month != post.created_at.month) %>
                   <% if curr_month == nil %>
                   <% else %>
-                      </ul><!-close prev months post list ->
-                    </li><!-closing li for previous month ->
+                      </ul>
+                    </li>
                   <% end %>
                   <li>
                     <% curr_month = post.created_at.month %>
-                    <%= post.created_at.strftime("%B") %><!- month name ->
-                    <ul> <!-list of posts opening ->
+                    <%= post.created_at.strftime("%B") %>
+                    <ul> 
                 <% end %>
                       <li>
                         <%= link_to post.title, post_path(post) %>
                       </li>
               <% end %>
             
-          </ul id="closeyearlist"><!- closing tag faround years ->
+          </ul id="closeyearlist">
         </div>
     </section>
   </aside>
