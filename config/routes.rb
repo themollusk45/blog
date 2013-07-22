@@ -1,12 +1,15 @@
 Blog::Application.routes.draw do
   resources :users do
-     member do
-	get :account
-     end
-     resources :links, only: [:new, :create, :destroy]
+    member do
+	    get :account#allows change of password on separate page
+    end
+    member do
+      get :following, :followers
+    end
+    resources :links, only: [:new, :create, :destroy]
   end
   resources :sessions, only: [:new, :create, :destroy]
-  
+  resources :relationships, only: [:create, :destroy]
   resources :posts, only: [:create, :destroy, :show, :update, :edit] do
     resources :comments
   end
