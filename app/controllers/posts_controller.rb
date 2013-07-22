@@ -24,6 +24,10 @@ class PostsController < ApplicationController
     @post = Post.find_by_id(params[:id])
   end
 
+  def index
+    @posts = Post.paginate(page: params[:page])
+  end
+
   def update
     @post = Post.find_by_id(params[:id])
     if @post.update_attributes(params[:post])

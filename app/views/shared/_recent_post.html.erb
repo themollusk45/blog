@@ -1,0 +1,18 @@
+<% if @recent_posts.any? %>
+  <ol class="posts">
+    <% @recent_posts.each do |post| %>
+    	<li id="<%=post.id %>" class="post_intro">
+    		<%= link_to gravatar_for(post.user), post.user %>
+    		<span class="user">
+    			<%= link_to post.user.name, post.user %>
+    		</span>
+    		<span class="title"><%= link_to post.title, post %></span>
+    		<span class="content"><%= simple_format post.content.split(' ').slice(0,50).join(' ') %>...</span>
+    		<span class="date">
+    			Posted <%= post.created_at %>
+    		</span>
+    	</li>
+    <% end %>
+  </ol>
+<% end %>
+
