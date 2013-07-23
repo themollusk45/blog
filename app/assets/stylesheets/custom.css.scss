@@ -36,6 +36,15 @@ textarea {
   }
 }
 
+#mugenright {
+  float:right;
+}
+
+.recent_posts {
+  margin:0 auto;
+  float: none;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -256,6 +265,62 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+.post_intro{
+  border: 1px $grayLighter;
+  padding: 2px;
+  margin: 2px;
+  .content{
+    p{
+      line-height: 1em;
+    }
+  }
+}
+
+.post_title{
+  border-bottom: 1px solid $grayLighter;
+  font-size: 2em;
+  line-height: 1.3em;
+  float: none;
+}
+.post_content{
+  border-bottom: 1px solid $grayLighter;
+}
+
+.controls{/* edit/delete for various things */
+  
+  border-bottom: 1px solid $grayLighter;
+}
+
+
+/* comment stuff */
+.comments{ /*not overriding... look at later so I dont have to have it in everything...*/
+  line-height: 1.2em;
+  h2 {
+    color: black;
+  }
+}
+
+.comment_author{
+  line-height: 1.2em;
+}
+
+.comment_body{
+  border: 1px solid $grayLighter;
+  line-height: 1.2em;
+}
+
+#comment_body{
+  height: 200px;
+}
+
+.comment_form{
+  h2 {
+    color: black;
+  }
+}
+
+
 
 /* right hand old post expandable list */
 #listContainer{

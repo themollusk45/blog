@@ -7,7 +7,8 @@
     			<%= link_to post.user.name, post.user %>
     		</span>
     		<span class="title"><%= link_to post.title, post %></span>
-    		<span class="content"><%= simple_format post.content.split(' ').slice(0,50).join(' ') %>...</span>
+    		<span class="content"><%= simple_format post.content.split(' ').slice(0,50).join(' ') %>
+    		</span>
     		<span class="date">
     			Posted <%= post.created_at %>
     		</span>

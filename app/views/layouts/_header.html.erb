@@ -23,6 +23,8 @@
 					  	</ul>
 					  </li>
 					 <% else %>
+					 	<li><%= link_to "Bloggers", users_path %></li>
+					 	<li><%= link_to "Recent Posts", posts_path %></li>
 					 	<li><%= link_to "Create Blog", signup_path %></li>
 					 	<li><%= link_to "Sign in", signin_path %></li>
 					 <% end %>

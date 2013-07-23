@@ -1,19 +1,20 @@
-<style type="text/css">
+<!-- <style type="text/css">
 
     body{
       
 
         background-color:#E0E0E0;
-        font:17px Arial, Helvetica, sans-serif ;
+        
     }
-</style>
+</style> -->
 
-<div class="row" style = "<%= show_blog_bg %>">
+<div class="row" ><!--style = "<%= show_blog_bg %>"> -->
   <aside class="span2">
     <section>
-      <p>left side stuff blah blah</p>
+      <!--left side can go here, to go in a partial later -->
     </section>
   </aside>
+
   <div class="span6">
   	<section>
 
@@ -21,56 +22,67 @@
         <%=h image_tag @post.user.logo.url %>
       <% end %>
     	
-      <%= @post.title %>
-		<%= simple_format @post.content %>
+      <p class="post_title"><%= @post.title %></p>
+
+		<div class="post_content">
+        <%= simple_format @post.content %>
+    </div>
     <% if signed_in? %>
   		<% if (current_user?(@post.user)) || (current_user.admin)%>
-  			
-        <%= link_to "edit post", edit_post_path(@post) %>
-  			<%= link_to "delete", @post, method: :delete,
-  										data: { confirm: "you sure?" },
-  										title: @post.title %>                  
+  			<div class="controls">
+          <%= link_to "edit post", edit_post_path(@post) %>
+    			<%= link_to "delete", @post, method: :delete,
+    										data: { confirm: "you sure?" },
+    										title: @post.title %>                  
+        </div>
   		<% end %>
      <% end %> 
     </section>
+    <div class="comments">
+      <h2>Comments</h2>
+      <% @post.comments.each do |comment| %>
+      	<p class="comment_author">
+      		<strong>Commenter:</strong>
+      		<%= comment.commenter %>
+      	</p>
 
-    <h2>Comments</h2>
-    <% @post.comments.each do |comment| %>
-    	<p>
-    		<strong>Commenter:</strong>
-    		<%= comment.commenter %>
-    	</p>
+      	<p>
+      		<div class="comment_body">
+            <strong>Comment:</strong>
+          
+      		  <%= simple_format comment.body %>
+          </div>  
+          <% if signed_in? %>
+        		<% if (current_user?(User.find_by_name(comment.commenter))) || (current_user.name == @post.user.name) || current_user.admin %>
+              <div class="controls">
+        				<%= link_to "edit comment", edit_post_comment_path(@post, comment) %> 
+                <%= link_to "delete", post_comment_path(@post, comment), method: :delete %>
+            </div>
+    			  <% end %>
+          <% end %>
+      	</p>
+      <% end %>
+    </div>  
 
-    	<p>
-    		<strong>Comment:</strong>
-    		<%= simple_format comment.body %>
-        <% if signed_in? %>
-      		<% if (current_user?(User.find_by_name(comment.commenter))) || (current_user.name == @post.user.name) || current_user.admin %>
-    				<%= link_to "edit comment", edit_post_comment_path(@post, comment) %> 
-            <%= link_to "delete", post_comment_path(@post, comment), method: :delete %>
-  			  <% end %>
-        <% end %>
-    	</p>
-    <% end %>
-
-    <h2>Leave a comment:</h2>
-    <%= form_for([@post, @post.comments.build]) do |f| %>
-    	<% if signed_in? %>
-			  <%= f.hidden_field :commenter, :value => current_user.name %>
-    	<% else %>
-    	  <p>
-	    	<%= f.label :commenter %><br />
-	    	<%= f.text_field :commenter %>
-	      </p>
-	    <% end %>
-	    <p>
-	    	<%= f.label :body %><br />
-	    	<%= f.text_area :body %>
-	    </p>
-	    <p>
-	    	<%= f.submit %>
-	    </p>
-	<% end %>
+    <div class="comment_form">
+      <h2>Leave a comment:</h2>
+      <%= form_for([@post, @post.comments.build]) do |f| %>
+      	<% if signed_in? %>
+  			  <%= f.hidden_field :commenter, :value => current_user.name %>
+      	<% else %>
+      	  <p>
+  	    	<%= f.label :commenter %><br />
+  	    	<%= f.text_field :commenter %>
+  	      </p>
+  	    <% end %>
+  	    <p>
+  	    	<%= f.text_area :body %>
+  	    </p>
+  	    <p>
+  	    	<%= f.submit %>
+  	    </p>
+  	  <% end %>
+    </div>
   </div>
   <aside class="span4 righthandside">
   	<p>right hand stuff</p>

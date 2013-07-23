@@ -29,6 +29,12 @@
 		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 	</div>
 
-	<%= link_to image_tag("mugen.png", alt: "Mugen"), '#' %>
-	<%= render 'shared/recent_post' %>
+	<%= link_to image_tag("mugen.png", alt: "Mugen"), '#', {:id => 'mugenleft'} %>
+	<%= link_to image_tag("mugenreverse.png", alt: "Mugen"), '#', {:id => 'mugenright'} %>
+	<div class="row">
+		<div class = "recent_posts span4">
+			<h3> Recent posts </h3>
+			<%= render 'shared/recent_post' %>
+		</div>	
+	</div>	
 <% end %>
