@@ -1,0 +1,22 @@
+<%= div_for comment do %>
+        	<p class="comment_author">
+        		<%= comment.commenter %>
+        	</p>
+
+        	<p>
+        		<div class="comment_body">
+            
+        		  <%= simple_format comment.body %>
+            </div>  
+            <% if signed_in? %>
+          		<% if (current_user?(User.find_by_name(comment.commenter))) || (current_user.name == @post.user.name) || current_user.admin %>
+                <div class="controls">
+          				<%= link_to "edit comment", edit_post_comment_path(@post, comment) %> 
+                  <%= link_to "delete", post_comment_path(@post, comment), 
+                                        method: :delete, 
+                                        remote: true %>
+              </div>
+      			  <% end %>
+            <% end %>
+        	</p>
+<% end %>

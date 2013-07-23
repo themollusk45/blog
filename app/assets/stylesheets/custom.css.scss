@@ -273,6 +273,7 @@ aside {
   .content{
     p{
       line-height: 1em;
+
     }
   }
 }
@@ -311,7 +312,7 @@ aside {
 }
 
 #comment_body{
-  height: 200px;
+  height: 100px;
 }
 
 .comment_form{
@@ -357,4 +358,19 @@ aside {
 /* NOTE this class must be located UNDER the collapsed one */
 #expList .expanded {
   background-image: url(../assets/expanded.png);
+}
+
+.rhs_links {
+  h2 {
+    line-height: 1.2;
+    border-bottom: 1px solid $grayLighter;
+    margin-bottom: 5px;
+  }
+}
+.oldposts{
+  border-top: 1px solid $grayLighter;
+  border-bottom: 1px solid $grayLighter;
+  h2 {
+    border-bottom: 1px solid $grayLighter;
+  }
 }

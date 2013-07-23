@@ -1,16 +1,21 @@
-<li class="post_intro">
-	<%= link_to gravatar_for(post.user), post.user %>
-    <span class="user">
-  	  <%= link_to post.user.name, post.user %>
-    </span>
-	<span class="title"><%= link_to post.title, post %></span>
-	
-	<span class="content"><%= post.content.split(' ').slice(0,50).join(' ') %></span>
-	<span class="date">Posted <%= post.created_at %></span>
-	<% if current_user?(post.user) || current_user.admin %>
-		<%= link_to "edit post", edit_post_path(post) %> 
-		<%= link_to "delete", post, method: :delete,
-									data: { confirm: "Remove post?" },
-									title: post.title %>
-	<% end %>
-</li>
+<%= div_for post do %>
+	<li class="post_intro">
+		<%= link_to gravatar_for(post.user), post.user %>
+	    <span class="user">
+	  	  <%= link_to post.user.name, post.user %>
+	    </span>
+		<span class="title"><%= link_to post.title, post %></span>
+		
+		<span class="content"><%= post.content.split(' ').slice(0,50).join(' ') %></span>
+		<span class="date">Posted <%= post.created_at %></span>
+		<% if current_user %>
+			<% if current_user?(post.user) || current_user.admin %>
+				<%= link_to "edit post", edit_post_path(post) %> 
+				<%= link_to "delete", post, method: :delete,
+											remote: true,
+											data: { confirm: "Remove post?" },
+											title: post.title %>
+			<% end %>
+		<% end %>
+	</li>
+<% end %>

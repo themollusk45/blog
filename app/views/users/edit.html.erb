@@ -22,23 +22,18 @@
       <%= f.submit "update logo", class: "btn btn-large btn-primary" %>
     <% end %>
 
-    <h1>Links to appear on right side bar</h1>
-    <section class="rhs_links">
+    <h2>Links to appear on right side bar</h2>
+    <section class="rhs">
       <ul>
-        <% @user.links.each do |link| %>
-          <li>
-            <%= link_to link.text, link.url %>
-            <%= link_to "edit link", '#' %>
-            <%= link_to "delete", user_link_path(@user.id, link.id), method: :delete,
-                                  :remote => true,
-                                  data: { confirm: "you sure?" } %>
-          </li>
-        <% end %>
+        <div class="rhs_links" id="links">
+          
+            <%= render @user.links %>
+          
+        </div>
       </ul>
     </section>
-    </section>
 
-    <%= form_for([@user, @user.links.build]) do |f| %>
+    <%= form_for([@user, @user.links.build], remote: true) do |f| %>
       <%= f.label :url, 'Enter url' %>
       <%= f.text_field :url %>
 

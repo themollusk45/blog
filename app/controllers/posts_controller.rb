@@ -41,7 +41,10 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by_id(params[:id])
     @post.destroy
-    redirect_to root_url 
+    respond_to do |format|
+       format.html { redirect_to root_url }
+       format.js
+     end
   end
 
   private
