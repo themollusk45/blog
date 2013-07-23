@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722153404) do
+ActiveRecord::Schema.define(:version => 20130723180320) do
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20130722153404) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.text     "bio"
+    t.text     "summary"
   end
 
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true

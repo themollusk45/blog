@@ -10,7 +10,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :logo
+  attr_accessible :email, :name, :password, :password_confirmation, :logo, :summary, :bio
   #attr_accessor :logo_file_name, :logo_file_size
   has_secure_password
   has_many :posts, dependent: :destroy

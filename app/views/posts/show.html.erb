@@ -123,6 +123,14 @@
             
           </ul>
         </div>
+
+        <!-- bio -->
+        <div id = "bio" >
+          <% if @user.bio != nil %>
+            <h2>About the author</h2>
+            <%= simple_format @user.bio %>
+          <% end %>    
+        </div>
     </section>
   </aside>
 </div>  

@@ -323,6 +323,14 @@ aside {
 
 
 
+#user_summary{
+  height:100px;
+}
+
+#user_bio{
+  height:100px;
+}
+
 /* right hand old post expandable list */
 #listContainer{
   margin-top: 15px;
@@ -361,6 +369,7 @@ aside {
 }
 
 .rhs_links {
+  padding-top: 100px; 
   h2 {
     line-height: 1.2;
     border-bottom: 1px solid $grayLighter;
@@ -370,6 +379,13 @@ aside {
 .oldposts{
   border-top: 1px solid $grayLighter;
   border-bottom: 1px solid $grayLighter;
+  h2 {
+    border-bottom: 1px solid $grayLighter;
+  }
+}
+#bio{
+  border-top: 1px solid $grayLighter;
+  border-bottom:1px solid $grayLighter;
   h2 {
     border-bottom: 1px solid $grayLighter;
   }
