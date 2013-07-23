@@ -1,25 +1,29 @@
 <% provide(:title, 'About') %>
-	<%= link_to image_tag("mugen.png", alt: "Mugen"), '#', {:id => 'mugenleft'} %>
-	<h1>About Me</h1>
-	<%= link_to image_tag("mugenreverse.png", alt: "Mugen"), '#', {:id => 'mugenright'} %>
-<p>
-	I am a graduate of SUNY Brockport, I am currently enjoying developing web applications
-	with Ruby on Rails.  I also enjoy working with silver, both wrapping and smithing.  I intend
-	to start a all-inclusive jewelry and web-design business in the near future.  As such feel free to contact me with any inquiries concerning procuring my services, questions about pugs or strange comments on life.  Contact me at: <a href="mailto:jeffross9045@gmail.com">jeffross9045@gmail.com</a>
-</p>
-<p>
-	Mugen is my pug!  
-</p>
+<div class="row">
+	<div class="span8 offset2">
+			
+			<h1><%= link_to image_tag("mugen.png", alt: "Mugen"), '#', {:id => 'mugenleft'} %>About Me</h1>
+			
+		<p>
+			I am a graduate of SUNY Brockport, I am currently enjoying developing web applications
+			with Ruby on Rails.  I also enjoy working with silver, both wrapping and smithing.  I intend
+			to start a all-inclusive jewelry and web-design business in the near future.  As such feel free to contact me with any inquiries concerning procuring my services, questions about pugs or strange comments on life.  Contact me at: <a href="mailto:jeffross9045@gmail.com">jeffross9045@gmail.com</a>
+		</p>
+		<p>
+			Mugen is my pug!  
+		</p>
 
-<p>
-	Special thanks to: Michael Hartl for
-		<a href="http://railstutorial.org/">Rails Tutorial</a>, making learning Rails
-		pretty darn easy.  I'll buy you a beer if we meet.
-</p>
-<p>
-	<a href="http://stackoverflow.com">StackOverflow.com</a>, for having a seemingly
-		exhaustive supply of questions and answers about Rails, Ruby and everything.
-</p>
-<p>
-	<a href="http://www.web-l.nl/posts/21-production-rails-on-ubuntu-10-04-lts">Dennis</a> for writing a nice guide on getting Rails working in a production environment.
-</p>
+		<p>
+			Special thanks to: Michael Hartl for
+				<a href="http://railstutorial.org/">Rails Tutorial</a>, making learning Rails
+				pretty darn easy.  I'll buy you a beer if we meet.
+		</p>
+		<p>
+			<a href="http://stackoverflow.com">StackOverflow.com</a>, for having a seemingly
+				exhaustive supply of questions and answers about Rails, Ruby and everything.
+		</p>
+		<p>
+			<a href="http://www.web-l.nl/posts/21-production-rails-on-ubuntu-10-04-lts">Dennis</a> for writing a nice guide on getting Rails working in a production environment.
+		</p>
+	</div>	
+</div>
