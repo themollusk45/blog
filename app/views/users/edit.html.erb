@@ -22,6 +22,11 @@
       <%= f.submit "update", class: "btn btn-large btn-primary" %>
     <% end %>
 
+<% @user.logo.all.each do |logo| %>
+  <%= logo.url(:standard) %>
+<% end %>
+
+
     <h2>Links to appear on right side bar</h2>
     <section class="rhs">
       <ul>

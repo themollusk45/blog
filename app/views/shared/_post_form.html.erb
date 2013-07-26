@@ -1,4 +1,4 @@
-<a href="#" class="show_hide">New Post</a>
+<a href="#" class="show_hide btn btn-small btn-primary">New Post</a>
 <div class="post_form">
 	<%= form_for(@post) do |f| %>
 	  <%= render 'shared/error_messages', object: f.object %>
@@ -10,5 +10,6 @@
 	  </div>
 	  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 	<% end %>
-	<a href="#" class="show_hide">hide</a>
+	<a href="#" class="show_hide btn btn-small btn-primary">hide</a>
 </div>
+

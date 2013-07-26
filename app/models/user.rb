@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower                                   
 
   has_attached_file :logo,
+    styles: {
+      standard: '460x460',#for regular browser
+      mobile: '230x230'#for mobile
+    },
     :url => "/:class/:attachment/:id/:style_:basename.:extension",
     :path => ":rails_root/public/:class/:attachment/:id/:style_:basename.:extension"
 

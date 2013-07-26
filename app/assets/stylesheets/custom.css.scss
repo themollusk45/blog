@@ -1,9 +1,10 @@
-@import "bootstrap";
+@import "bootstrap"; 
 
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
 $grayLighter: #d9d9d9;
+
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -90,6 +91,40 @@ p {
     text-decoration: none;
   }
 }
+
+/* nav bar */
+
+.navbar-inverse .navbar-inner { /* such a pain to find and set... */
+  background-color: $grayDark;
+  background: -webkit-linear-gradient(top, $grayDark 0%, $grayLight 100%);
+  background: linear-gradient(to bottom, $grayDark 0%, $grayLight 100%);
+  
+}
+
+.navbar-inverse .nav > li{
+    margin: 0 0 0 5px;    
+}
+
+.navbar-inverse .nav > li > a{
+      padding: 5px 15px; 
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+      -webkit-border-radius: 14px;
+      -moz-border-radius: 14px;
+      border-radius: 14px;
+      
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      
+      &:hover, &:focus {
+        color: #fff;
+        background: rgba(255,255,255,0.15);
+      }
+
+    }
 
 /* footer */
 
@@ -218,6 +253,9 @@ input {
   margin-top:10px;
   border-bottom:5px solid gray;
   display: none;
+}
+#post-form{
+  min-height: 23px;
 }
 
  .show_hide {

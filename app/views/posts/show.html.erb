@@ -18,8 +18,8 @@
   <div class="span6">
   	<section>
 
-      <% if(@post.user.logo.url != "/logos/original/missing.png") %>
-        <%=h image_tag @post.user.logo.url %>
+      <% if(@post.user.logo.url(:standard) != "/logos/original/missing.png") %>
+        <%=h image_tag @post.user.logo.url(:standard) %>
       <% end %>
     	
       <p class="post_title"><%= @post.title %></p>
@@ -63,7 +63,7 @@
   	    	<%= f.text_area :body %>
   	    </p>
   	    <p>
-  	    	<%= f.submit %>
+  	    	<%= f.submit class: "btn btn-large" %>
   	    </p>
   	  <% end %>
     </div>
