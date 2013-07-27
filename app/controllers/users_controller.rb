@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @image = current_user.images.build if signed_in?
   end
 
   def index
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    
+    @image = current_user.images.build if signed_in?
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
       sign_in @user

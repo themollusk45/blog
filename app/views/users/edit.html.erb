@@ -3,65 +3,97 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+    <div id="change_email">
+      <%= form_for(@user, :remote=>true) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.hidden_field :password, :value => current_user.password %>
-      <%= f.hidden_field :password_confirmation, :value => current_user.password_confirmation %>
+        <%= f.hidden_field :password, :value => current_user.password %>
+        <%= f.hidden_field :password_confirmation, :value => current_user.password_confirmation %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
 
-      <% if(@user.logo.url != "/logos/original/missing.png") %>
-        <%=h image_tag @user.logo.url %>
+        <%= f.submit "update", class: "btn btn-large btn-primary" %>
       <% end %>
+    </div>  
+
+    <div id="upload_image">
+      <%= form_for(@image, :remote=>true) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :alt %>
+        <%= f.text_field :alt %>
+
+        <%# if(@user.logo.url != "/logos/original/missing.png") %>
+          <%#=h image_tag @user.logo.url %>
+        <%# end %>
+      
+        <%= f.label :image_file, 'Choose the image logo which will appear at the top of your blog' %>
+        <%= f.file_field :image_file %>
+
+        <%= f.submit "Upload image", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>  
+
+
+    <div id="select_logo">
+      <%= form_for @user, :remote=>true do |f| %>
+        <%= collection_select(:user, :logo, @user.images, :id, :alt)  %>
+        <%= f.submit "select logo", class: "btn btn-small btn-primary" %>
+      <% end %>
+    </div>
+      
+    <div id="select_avatar">
+      <%= form_for @user, :remote=>true do |f| %>
+        <%= collection_select(:user, :avatar, @user.images, :id, :alt)  %>
+        <%= f.submit "select avatar", class: "btn btn-small btn-primary" %>
+        <% if(@user.avatar) %>
+           <%=h image_tag Image.find_by_id(@user.avatar).image_file.url(:avatar), :alt => @user.name %>
+        <% end %>
+      <% end %>
+    </div>  
+
+    <div id="add_links">
+      <h2>Links to appear on right side bar</h2>
+      <section class="rhs">
+        <ul>
+          <div class="rhs_links" id="links">
+            
+              <%= render @user.links %>
+            
+          </div>
+        </ul>
+      </section>
+
+      <%= form_for([@user, @user.links.build], remote: true) do |f| %>
+        <%= f.label :url, 'Enter url' %>
+        <%= f.text_field :url %>
+
+        <%= f.label :text, 'Enter text for link' %>
+        <%= f.text_field :text %>
+        
+        <%= f.label :image, 'upload image for link' %>
+        <%= f.file_field :image %>
+        
+        <%= f.submit "add link", class: "btn btn-large btn-primary" %>
+      <% end %>
+   </div>
     
-      <%= f.label :logo, 'Choose the image logo which will appear at the top of your blog' %>
-      <%= f.file_field :logo %>
-
-      <%= f.submit "update", class: "btn btn-large btn-primary" %>
-    <% end %>
-
-<% @user.logo.all.each do |logo| %>
-  <%= logo.url(:standard) %>
-<% end %>
-
-
-    <h2>Links to appear on right side bar</h2>
-    <section class="rhs">
-      <ul>
-        <div class="rhs_links" id="links">
-          
-            <%= render @user.links %>
-          
-        </div>
-      </ul>
-    </section>
-
-    <%= form_for([@user, @user.links.build], remote: true) do |f| %>
-      <%= f.label :url, 'Enter url' %>
-      <%= f.text_field :url %>
-
-      <%= f.label :text, 'Enter text for link' %>
-      <%= f.text_field :text %>
-
-      <%= f.submit "add link", class: "btn btn-large btn-primary" %>
-    <% end %>
-   
-    <%= form_for(@user, remote: true) do |f| %>
-         <p>Enter a bio</p>
-      <%= f.label :bio %>
-      <%= f.text_area :bio %>
-      <%= f.submit "add/edit bio", class: "btn btn-large btn-primary" %>
-    <% end %>
-
-     <%= form_for(@user, remote: true) do |f| %>
-         <p>Enter a blog summary</p>
-      <%= f.label :summary %>
-      <%= f.text_area :summary %>
-      <%= f.submit "add/edit summary", class: "btn btn-large btn-primary" %>
-    <% end %>
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
-  </div>
+    <div id="bio">
+      <%= form_for(@user, remote: true) do |f| %>
+           <p>Enter a bio</p>
+        <%= f.label :bio %>
+        <%= f.text_area :bio %>
+        <%= f.submit "add/edit bio", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+      
+     <div id="blog_summary">     
+       <%= form_for(@user, remote: true) do |f| %>
+           <p>Enter a blog summary</p>
+        <%= f.label :summary %>
+        <%= f.text_area :summary %>
+        <%= f.submit "add/edit summary", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
 </div>

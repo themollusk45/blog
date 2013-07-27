@@ -13,6 +13,7 @@ Blog::Application.routes.draw do
   resources :posts, only: [:create, :destroy, :show, :update, :edit, :index] do
     resources :comments
   end
+  resources :images
 
   root to: 'static_pages#home'
 

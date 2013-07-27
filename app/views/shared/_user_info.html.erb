@@ -1,5 +1,9 @@
 <a href="<%= user_path(current_user) %>">
-  <%= gravatar_for current_user, size: 52 %>
+  <% if current_user.avatar %>
+		<%=h link_to image_tag(Image.find_by_id(current_user.avatar).image_file.url(:avatar), :alt => current_user.name, :class => 'avatar', :width => '64'), current_user %>
+  <% else %>
+	   <%= link_to image_tag("defaultavatar.jpeg", alt: current_user.name, :size => '64x64'), current_user, {:class => 'avatar'} %>
+  <% end %>
 </a>
 <h1>
   <%= current_user.name %>

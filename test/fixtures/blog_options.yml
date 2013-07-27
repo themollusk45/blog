@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  bg_image: 1
+  column-color: MyString
+  bg_color: MyString
+  font_color: MyString
+  font: MyString
+  font_size: 
+  link_color: MyString
+  title_size: 1
+  title_color: MyString
+  user_id: 1
+  keywords: MyText
+
+two:
+  bg_image: 1
+  column-color: MyString
+  bg_color: MyString
+  font_color: MyString
+  font: MyString
+  font_size: 
+  link_color: MyString
+  title_size: 1
+  title_color: MyString
+  user_id: 1
+  keywords: MyText

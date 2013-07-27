@@ -261,6 +261,9 @@ input {
  .show_hide {
   display: none;
 } 
+select, input {
+  padding: 5px;
+}
 
 /* users index */
 

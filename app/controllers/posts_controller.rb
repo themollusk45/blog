@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by_id(params[:id])
     @user = @post.user
+    @logo = Image.find_by_id(@user.logo)
     @comment = Comment.find_by_id(params[:comment])
   end
 

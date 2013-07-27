@@ -3,8 +3,11 @@
 	<aside class="span4">
 		<section>
 			<h1>
-				<%= gravatar_for @user %>
-				<%= @user.name %>
+			  <% if user.avatar %>
+				<%=h link_to image_tag(Image.find_by_id(user.avatar).image_file.url(:avatar), :alt => user.name, :class => 'avatar', :width => '64'), user %>
+			  <% else %>
+	   			<%= link_to image_tag("defaultavatar.jpeg", alt: user.name, :size => '64x64'), user, {:class => 'avatar'} %>
+			  <% end %>
 			</h1>
 		</section>
 	</aside>
