@@ -10,7 +10,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :logo, :summary, :bio
+  attr_accessible :email, :name, :password, :password_confirmation, :summary, :bio, :logo, :avatar
   #attr_accessor :logo_file_name, :logo_file_size
   has_secure_password
   has_many :posts, dependent: :destroy
@@ -23,13 +23,9 @@ class User < ActiveRecord::Base
                                    dependent:  :destroy
   has_many :followers, through: :reverse_relationships, source: :follower                                   
 
-  has_attached_file :logo,
-    styles: {
-      standard: '460x460',#for regular browser
-      mobile: '230x230'#for mobile
-    },
-    :url => "/:class/:attachment/:id/:style_:basename.:extension",
-    :path => ":rails_root/public/:class/:attachment/:id/:style_:basename.:extension"
+  has_many :images, dependent: :destroy
+
+
 
   #before_save { |user| user.name = name.downcase }
   before_save :create_remember_token
@@ -41,7 +37,7 @@ class User < ActiveRecord::Base
   					format: { with: VALID_EMAIL_REGEX }
  # validates :password, presence: true, length: { minimum: 6 }
  # validates :password_confirmation, presence: true  
-  validates_attachment_size :logo, :less_than => 3.megabytes
+
 
 
 

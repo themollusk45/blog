@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723180320) do
+ActiveRecord::Schema.define(:version => 20130727201427) do
+
+  create_table "blog_options", :force => true do |t|
+    t.integer  "bg_image"
+    t.string   "column_color"
+    t.string   "bg_color"
+    t.string   "font_color"
+    t.string   "font"
+    t.integer  "font_size"
+    t.string   "link_color"
+    t.integer  "title_size"
+    t.string   "title_color"
+    t.integer  "user_id"
+    t.text     "keywords"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -22,6 +38,17 @@ ActiveRecord::Schema.define(:version => 20130723180320) do
   end
 
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+
+  create_table "images", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "alt"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "image_file_file_name"
+    t.string   "image_file_content_type"
+    t.integer  "image_file_file_size"
+    t.datetime "image_file_updated_at"
+  end
 
   create_table "links", :force => true do |t|
     t.integer  "user_id"
@@ -59,17 +86,15 @@ ActiveRecord::Schema.define(:version => 20130723180320) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",             :default => false
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.boolean  "admin",           :default => false
     t.text     "bio"
     t.text     "summary"
+    t.integer  "logo"
+    t.integer  "avatar"
   end
 
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
