@@ -1,14 +1,14 @@
-<!-- <style type="text/css">
+<% provide(:title, @post.title) %>
+<% provide(:meta_tag, @post.user.keywords) %>
 
-    body{
-      
+<style type="text/css"> 
+  <%= apply_custom_css %> 
+  <% if @post.user.bg_image!=-999 %>
+    <%= show_blog_bg %>
+  <% end %>
+</style>
 
-        background-color:#E0E0E0;
-        
-    }
-</style> -->
-
-<div class="row" ><!--style = "<%= show_blog_bg %>"> -->
+<div class="row" >
   <aside class="span2">
     <section>
       <!--left side can go here, to go in a partial later -->
@@ -16,13 +16,13 @@
   </aside>
 
   <div class="span6">
-  	<section>
+  	<section class="center_column">
 
-      <% if(@logo.image_file.url(:standard) != "/logos/original/missing.png") %>
+      <% if(@logo) %>
         <%=h image_tag @logo.image_file.url(:standard), :alt => @logo.alt %>
       <% end %>
     	
-      <p class="post_title"><%= @post.title %></p>
+      <h1 class="post_title"><%= @post.title %></h1>
 
 		<div class="post_content">
         <%= simple_format @post.content %>

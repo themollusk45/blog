@@ -10,7 +10,11 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :summary, :bio, :logo, :avatar
+  attr_accessible :email, :name, :password, :password_confirmation, 
+                  :summary, :bio, :logo, :avatar, :bg_image, :bg_color,
+                  :col_color, :font_color, :font, :font_size, :link_color,
+                  :title_size, :title_color, :keywords
+
   #attr_accessor :logo_file_name, :logo_file_size
   has_secure_password
   has_many :posts, dependent: :destroy
@@ -24,8 +28,6 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower                                   
 
   has_many :images, dependent: :destroy
-
-
 
   #before_save { |user| user.name = name.downcase }
   before_save :create_remember_token

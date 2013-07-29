@@ -23,6 +23,4 @@ $(function prepareList() {
 	})
 });
 
-$(document).ready( function() {
-	prepareList()
-});
+

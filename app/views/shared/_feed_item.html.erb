@@ -1,5 +1,11 @@
 <li id="<%= feed_item.id %> " class="post_intro">
-  <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+  <% if feed_item.user.avatar %>
+    <%=h link_to image_tag(Image.find_by_id(feed_item.user.avatar).image_file.url(:avatar), :alt => feed_item.user.name, :class => 'avatar', :width => '64'), feed_item.user %>
+  <% else %>
+     <%= link_to image_tag("defaultavatar.jpeg", alt: feed_item.user.name, :size => '64x64'), feed_item.user, {:class => 'avatar'} %>
+  <% end %>
+
+  
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>

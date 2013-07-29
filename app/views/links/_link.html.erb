@@ -1,8 +1,8 @@
 <%= div_for link do %>
-  <% if link.image %>
+  <% if link.image.url != '/images/original/missing.png'%>
   	<li><%=h link_to image_tag(link.image.url(:med), :alt => link.text, :class => 'link_image'), link.url %>
   <% else %>
-    <li ><%= link_to link.text, link.url %></li>
+    <li ><%= link_to link.text, link.url %>
 
   <% end %>  
   <% if signed_in? %>
@@ -11,6 +11,6 @@
                   :remote => true,
                   data: { confirm: "you sure?" } %>
       <% end %>  
-  <% end %>
+  <% end %></li>
 
 <% end %>  

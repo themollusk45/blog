@@ -1,8 +1,9 @@
 <% provide(:title, "Edit user") %> 
+
 <h1>Update your profile</h1>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span6 offset3 options_page">
     <div id="change_email">
       <%= form_for(@user, :remote=>true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
@@ -13,7 +14,7 @@
         <%= f.label :email %>
         <%= f.text_field :email %>
 
-        <%= f.submit "update", class: "btn btn-large btn-primary" %>
+        <%= f.submit "update", class: "btn btn-med btn-primary" %>
       <% end %>
     </div>  
 
@@ -31,7 +32,7 @@
         <%= f.label :image_file, 'Choose the image logo which will appear at the top of your blog' %>
         <%= f.file_field :image_file %>
 
-        <%= f.submit "Upload image", class: "btn btn-large btn-primary" %>
+        <%= f.submit "Upload image", class: "btn btn-med btn-primary" %>
       <% end %>
     </div>  
 
@@ -43,6 +44,13 @@
       <% end %>
     </div>
       
+    <div id="select_bg">
+      <%= form_for @user, :remote=>true do |f| %>
+        <%= collection_select(:user, :bg_image, @user.images, :id, :alt)  %>
+        <%= f.submit "select background image", class: "btn btn-small btn-primary" %>
+      <% end %>
+    </div>
+
     <div id="select_avatar">
       <%= form_for @user, :remote=>true do |f| %>
         <%= collection_select(:user, :avatar, @user.images, :id, :alt)  %>
@@ -75,25 +83,88 @@
         <%= f.label :image, 'upload image for link' %>
         <%= f.file_field :image %>
         
-        <%= f.submit "add link", class: "btn btn-large btn-primary" %>
+        <%= f.submit "add link", class: "btn btn-med btn-primary" %>
       <% end %>
-   </div>
-    
+    </div>
+  
+      <script type="text/javascript">        
+        $(document).ready(
+          function()
+          {
+            $('.Multiple').jPicker();
+          });
+      </script>
+
+   
+    <div id="color_options">
+      <%= form_for(@user, remote: true) do |f| %>
+        
+        
+          Background color:
+          <%= f.text_field :bg_color, class: "Multiple options" %>
+        </br>
+
+        
+          Main column background color:
+          <%= f.text_field :col_color, class: "Multiple options" %>
+        </br>
+        
+        
+          Font color:
+          <%= f.text_field :font_color, class: "Multiple options" %>
+        </br>
+        
+        
+          Title color:
+          <%= f.text_field :title_color, class: "Multiple options" %>
+        
+        <br/>
+
+        <%= f.submit "update colors", class: "btn btn-med btn-primary" %>
+      <% end %>
+    </div>   
+
+    <div id="font_sizes">
+      <%= form_for(@user, remote: true) do |f| %>
+           
+        <%= f.label :font_size %>
+        <%= f.text_field :font_size , class: "options" %>
+
+        <%= f.label :title_size %>
+        <%= f.text_field :title_size, class: "options" %>
+
+        <%= f.submit "edit font size", class: "btn btn-med btn-primary" %>
+      <% end %>
+    </div>
+
+
     <div id="bio">
       <%= form_for(@user, remote: true) do |f| %>
            <p>Enter a bio</p>
         <%= f.label :bio %>
         <%= f.text_area :bio %>
-        <%= f.submit "add/edit bio", class: "btn btn-large btn-primary" %>
+        <%= f.submit "add/edit bio", class: "btn btn-med btn-primary" %>
       <% end %>
     </div>
+
+
       
-     <div id="blog_summary">     
+    <div id="blog_summary">     
        <%= form_for(@user, remote: true) do |f| %>
            <p>Enter a blog summary</p>
-        <%= f.label :summary %>
-        <%= f.text_area :summary %>
-        <%= f.submit "add/edit summary", class: "btn btn-large btn-primary" %>
+          <%= f.label :summary %>
+          <%= f.text_area :summary %>
+        <%= f.submit "add/edit summary", class: "btn btn-med btn-primary" %>
       <% end %>
     </div>
+
+    <div id="meta_keywords">
+      <%= form_for(@user, remote: true) do |f| %>
+        <p>Enter keywords for your blogs meta tag</p>
+        <%= f.label :keywords %>
+        <%= f.text_area :keywords %>
+        <%= f.submit "add/edit keywords", class: "btn btn-med btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>

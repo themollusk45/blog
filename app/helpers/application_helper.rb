@@ -9,8 +9,7 @@ module ApplicationHelper
 		end
 	end
 
-	def show_blog_bg
-		"background:transparent url(#{@post.user.logo}) no-repeat fixed left top;"
-	end
+
+
 end
 

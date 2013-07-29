@@ -62,7 +62,7 @@ h1 {
 h2 {
   font-size: 1.7em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   font-weight: normal;
   color: $grayLight;
@@ -187,10 +187,7 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
+
 
 .stats {
   overflow: auto;
@@ -409,12 +406,21 @@ aside {
   background-image: url(../assets/expanded.png);
 }
 
+
+.rhs{
+  h2{
+    margin-bottom: 7px;
+  }
+}
 .rhs_links {
   padding-top: 100px; 
   h2 {
     line-height: 1.2;
     border-bottom: 1px solid $grayLighter;
-    margin-bottom: 5px;
+   
+  }
+  li{
+    margin-bottom: 10px;
   }
 }
 .oldposts{
@@ -427,7 +433,27 @@ aside {
 #bio{
   border-top: 1px solid $grayLighter;
   border-bottom:1px solid $grayLighter;
+  p{
+    line-height: 1.3e2m;
+  }
   h2 {
     border-bottom: 1px solid $grayLighter;
   }
+}
+
+/* options page */
+
+.options_page {
+  background-color: rgba($grayLighter, .25);
+  div{
+    border-bottom: 1px solid $grayDark; 
+  }
+}
+
+.options{
+  width: 75px;
+}
+
+#link_image, #image_image_file {
+  margin-bottom: 0px;
 }

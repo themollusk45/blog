@@ -15,6 +15,7 @@ Blog::Application.routes.draw do
   end
   resources :images
 
+
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new'

@@ -11,23 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727201427) do
-
-  create_table "blog_options", :force => true do |t|
-    t.integer  "bg_image"
-    t.string   "column_color"
-    t.string   "bg_color"
-    t.string   "font_color"
-    t.string   "font"
-    t.integer  "font_size"
-    t.string   "link_color"
-    t.integer  "title_size"
-    t.string   "title_color"
-    t.integer  "user_id"
-    t.text     "keywords"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130729192110) do
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -86,8 +70,8 @@ ActiveRecord::Schema.define(:version => 20130727201427) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                                                      :null => false
+    t.datetime "updated_at",                                                                      :null => false
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
@@ -95,6 +79,16 @@ ActiveRecord::Schema.define(:version => 20130727201427) do
     t.text     "summary"
     t.integer  "logo"
     t.integer  "avatar"
+    t.string   "col_color",       :default => "dddddd"
+    t.integer  "bg_image",        :default => -999
+    t.string   "bg_color",        :default => "ffffff"
+    t.string   "font_color",      :default => "000000"
+    t.string   "font",            :default => "\"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    t.string   "font_size",       :default => "1.1em"
+    t.string   "link_color",      :default => "0088cc"
+    t.string   "title_size",      :default => "2em"
+    t.string   "title_color",     :default => "ffffff"
+    t.text     "keywords"
   end
 
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
