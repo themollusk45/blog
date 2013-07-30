@@ -15,7 +15,7 @@ module PostsHelper
 		
 		
 		.center_column {	
-			background-color: #{convert_hex_to_rgb(@post.user.col_color,0.75)};
+			background-color: #{convert_hex_to_rgb(@post.user.col_color,@post.user.column_opacity)};
 			
 			color: ##{@post.user.font_color};
 			font-size: #{@post.user.font_size};
@@ -34,6 +34,13 @@ module PostsHelper
 
 		a {
 			color: ##{@post.user.link_color};
+		}
+
+		.navbar-inverse .navbar-inner { /* such a pain to find and set... */
+  			background-color: ##{@post.user.col_color};
+  			background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, #{convert_hex_to_rgb(@post.user.col_color,0.5)} 100%);
+  			background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, #{convert_hex_to_rgb(@post.user.col_color,0.5)} 100%);
+  
 		}
 		"
 		
