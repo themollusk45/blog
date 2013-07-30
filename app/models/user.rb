@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, 
                   :summary, :bio, :logo, :avatar, :bg_image, :bg_color,
                   :col_color, :font_color, :font, :font_size, :link_color,
-                  :title_size, :title_color, :keywords
+                  :title_size, :title_color, :keywords, :column_opacity
 
   #attr_accessor :logo_file_name, :logo_file_size
   has_secure_password

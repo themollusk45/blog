@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729192110) do
+ActiveRecord::Schema.define(:version => 20130730191450) do
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20130729192110) do
     t.string   "title_size",      :default => "2em"
     t.string   "title_color",     :default => "ffffff"
     t.text     "keywords"
+    t.string   "column_opacity",  :default => "0.5"
   end
 
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true

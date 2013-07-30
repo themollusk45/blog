@@ -15,7 +15,7 @@ module PostsHelper
 		
 		
 		.center_column {	
-			background-color: #{convert_hex_to_rgb(@post.user.col_color,0.5)};
+			background-color: #{convert_hex_to_rgb(@post.user.col_color,0.75)};
 			
 			color: ##{@post.user.font_color};
 			font-size: #{@post.user.font_size};
@@ -23,14 +23,19 @@ module PostsHelper
 		
 		.rhs {
 			
-			background-color: #{convert_hex_to_rgb(@post.user.col_color,0.75)};
+			background-color: #{convert_hex_to_rgb(@post.user.col_color,(@post.user.column_opacity.to_f*1.5).to_s)};
 		
 		}
 
-		.post_title {
+		.post_title, h1, h2, h3, h4, h5, h6 {
 			font-size: #{@post.user.title_size};
 			color: ##{@post.user.title_color};
-		}"
+		}
+
+		a {
+			color: ##{@post.user.link_color};
+		}
+		"
 		
 	
 
@@ -41,6 +46,8 @@ module PostsHelper
   	b = color[4].hex*16 + color[5].hex
   	return "rgba(#{r},#{g},#{b},#{a})"
   end
+
+ 
 end
 
 
